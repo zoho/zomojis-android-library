@@ -1,0 +1,91 @@
+<project name="build" default="clone" basedir=".">
+    <taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
+
+    <property environment="env"/>
+    <echo message="JAVA_HOME        :::: ${env.JAVA_HOME}" />
+    <echo message="ANT HOME         :::: ${env.ANT_HOME}" />
+    <echo message="ENVIRONMENT PATH :::: ${env.PATH}" />
+	<if>
+	    <not>
+	        <isset property="trim_val"/>
+	    </not>
+	    <then>
+	        <loadfile property="trim_val" srcfile="ant.properties">
+	            <filterchain>
+	              <trim/>
+	            </filterchain>
+	        </loadfile>
+	        <echo message="${trim_val}" file="ant.properties"/>
+	    </then>
+	</if>
+
+    <property file="ant.properties"/>
+                                                                                                        
+<!-- ============================================================================
+       CALLING PRECHECK TASK
+     =========================================================================-->
+
+<target name="clone">
+
+	<if>
+		<equals arg1="${os.name}" arg2="Mac OS X"/>
+		<then>
+			<echo message="OS ${os.name}"/>
+
+			<exec dir="${basedir}" executable="which" outputproperty="hgpath" errorproperty="hgerr">
+				<arg line="hg"/>
+			</exec>
+		</then>
+		<else>
+			<property name="hgpath" value="hg"/>
+		</else>
+	</if>
+	<echo message="HG PATH : ${hgpath}"/>
+
+    <if>
+        <not>
+            <available file="${basedir}/hg_utils" type="dir"/>
+        </not>
+        <then>
+            <exec dir="${basedir}" executable="${hgpath}" failonerror="true">
+		   <arg line="--config http_proxy.no=cmsuite.csez.zohocorpin.com clone -rHG_UTILS_REVIEWED https://anonymous:anon@cmsuite.csez.zohocorpin.com/integ/hg_utils"/>
+            </exec>
+        </then>
+        <else>
+            <exec dir="${basedir}/hg_utils" executable="${hgpath}" failonerror="true">
+                <arg line="--config http_proxy.no=cmsuite.csez.zohocorpin.com pull -u -rHG_UTILS_REVIEWED https://anonymous:anon@cmsuite.csez.zohocorpin.com/integ/hg_utils"/>
+            </exec>
+        </else>
+    </if>
+
+    <copy file="${basedir}/hg_utils/build/library.xml" todir="." overwrite="true"/> 
+    
+    <copy todir="." overwrite="true">
+        <fileset dir="${basedir}/hg_utils/build/rule">
+            <exclude name=""/>
+        </fileset>
+    </copy>
+
+    <ant antfile="${basedir}/checks.xml" target="precheck"/> 
+
+
+</target>
+
+<!-- ============================================================================
+       CLEAN TASK
+     =========================================================================-->
+
+<target name="clean">
+	<if>
+		<available file="${basedir}/checks.xml" type="file"/>
+		<then>
+    		<ant antfile="${basedir}/checks.xml" target="clean"/> 
+		</then>
+		<else>
+			<echo message="checks.xml is not available in current directory."/>
+			<echo message="Please run local build and then try to clean"/>
+		</else>
+	</if>
+</target>
+
+</project>
