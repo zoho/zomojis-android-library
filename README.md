@@ -38,23 +38,23 @@ Zomojis.prepareKeyboard(myContext, myEditText, myZomojiSize);
 View view = Zomojis.getKeyboard(this);
 myKeyboardLayout.addView(view); 
 ```
-##### getSpan(TextView textView , CharSequence text, int zomojiSize)
+##### getSpan(TextView textView, CharSequence text, int zomojiSize)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Parses the given characters into Zomojis and returns a [`Spannable`](https://developer.android.com/reference/android/text/Spannable.html) applied with Zomojis.  <br/>
 ```java
 Spannable span = Zomojis.getSpan(myTextView, myText, myZomojiSize); 
 // do your your formatting to the span if you have any ...
 myTextView.setText(span); 
 ```
-***Note:*** If you want high quality Zomojis, invoke `getSpan(TextView, CharSequence, int, boolean)`[boolean = true for High quality Zomoji]. Also keep in mind that high quality Zomojis may consume more memory and may cause performance issues. <br/>
+***Note:*** If you want high quality Zomojis, invoke `getSpan(TextView, CharSequence, int, boolean)` [boolean = true for High quality Zomoji]. Also keep in mind that high quality Zomojis may consume more memory and may cause performance issues. <br/>
 
 ##### isSingleZomoji()
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Checks if the given text is a Zomoji. Returns ***true*** if the message is only a Zomoji.  <br/>
 ```java
 if(Zomojis.isSingleZomoji(myText)) {
-   // Single zomoji, I may go with high quality, display without background, etc.
+   // With single Zomoji, you can choose between high quality rendering, display without background, etc.
 }
 else {
-   // Multiple Zomojis, I may go with normal quality.
+   // With multiple Zomojis, you can use normal quality Zomojis.
 }
 ``` 
 ##### unregister()
