@@ -1,13 +1,10 @@
 package com.zoho.zomojis.parser;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.VectorDrawable;
-import android.support.graphics.drawable.VectorDrawableCompat;
-import android.support.v4.graphics.drawable.DrawableCompat;
+
+import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.widget.EditText;
@@ -21,11 +18,8 @@ import java.util.regex.Pattern;
 
 import com.zoho.zomojis.model.Animoji;
 import com.zoho.zomojis.handler.AnimojiHandler;
-import com.zoho.zomojis.config.DeviceConfig;
 import com.zoho.zomojis.helper.ZomojiImageSpan;
 import com.zoho.zomojis.utils.ZomojiInitUtils;
-
-import static com.zoho.zomojis.utils.CommonUtils.dpToPx;
 
 public class ZomojiParser {
 

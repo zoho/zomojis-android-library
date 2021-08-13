@@ -3,7 +3,7 @@ package com.zoho.zomojis.handler;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.support.design.widget.TabLayout;
+import com.google.android.material.tabs.TabLayout;
 import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;

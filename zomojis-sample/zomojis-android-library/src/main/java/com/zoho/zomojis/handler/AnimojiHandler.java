@@ -92,7 +92,7 @@ public class AnimojiHandler {
             ArrayList notReadyList = new ArrayList<>();
             PendingAnimoji p = new PendingAnimoji(textView, start, end);
             notReadyList.add(p);
-            mPendingMap.put(name + "" + bounds, new ArrayList<>(notReadyList));
+            mPendingMap.put(name + "" + bounds, new ArrayList<PendingAnimoji>(notReadyList));
 
             AnimojiLoader anim = new AnimojiLoader(name, bounds, is72);
             pool.submit(anim);

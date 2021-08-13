@@ -1,17 +1,14 @@
 package sample.zoho.zomojis;
 
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.text.Spannable;
-import android.text.SpannableString;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.zoho.zomojis.Zomojis;
-import com.zoho.zomojis.helper.ZomojiImageSpan;
 
 
 public class MainActivity extends AppCompatActivity {

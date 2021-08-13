@@ -70,7 +70,7 @@
         android:id="@+id/emojiparent"
         android:orientation="vertical">
 
-        <android.support.v4.view.ViewPager
+        <androidx.viewpager.widget.ViewPager
             android:id="@+id/emojiviewpager"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -98,7 +98,7 @@
                     android:layout_centerHorizontal="true"
                     app:srcCompat="@drawable/vector_keyboard_black"/>
             </RelativeLayout>
-            <android.support.design.widget.TabLayout
+            <com.google.android.material.tabs.TabLayout
                 android:id="@+id/emoji_sliding_tabs"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
@@ -126,7 +126,7 @@
         android:id="@+id/animojiparent"
         android:orientation="vertical">
 
-        <android.support.v4.view.ViewPager
+        <androidx.viewpager.widget.ViewPager
             android:id="@+id/animojiviewpager"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -154,7 +154,7 @@
                     android:layout_centerHorizontal="true"
                     app:srcCompat="@drawable/vector_keyboard_black"/>
             </RelativeLayout>
-            <android.support.design.widget.TabLayout
+            <com.google.android.material.tabs.TabLayout
                 android:id="@+id/animoji_sliding_tabs"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
